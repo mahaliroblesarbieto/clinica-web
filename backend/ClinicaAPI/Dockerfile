@@ -3,13 +3,13 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copiar csproj y restaurar dependencias
-COPY ["ClinicaAPI.csproj", "./"]
-RUN dotnet restore "ClinicaAPI.csproj"
+COPY ClinicaAPI.csproj ./
+RUN dotnet restore
 
 # Copiar todo el código y compilar
 COPY . .
-RUN dotnet build "ClinicaAPI.csproj" -c Release -o /app/build
-RUN dotnet publish "ClinicaAPI.csproj" -c Release -o /app/publish
+RUN dotnet build -c Release -o /app/build
+RUN dotnet publish -c Release -o /app/publish
 
 # Etapa de runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
