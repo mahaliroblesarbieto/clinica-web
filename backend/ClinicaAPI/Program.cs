@@ -7,8 +7,17 @@ using ClinicaAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Construir connection string desde variables de entorno
+var dbHost = builder.Configuration["DB_HOST"] ?? "localhost";
+var dbName = builder.Configuration["DB_NAME"] ?? "postgres";
+var dbUser = builder.Configuration["DB_USER"] ?? "postgres";
+var dbPassword = builder.Configuration["DB_PASSWORD"] ?? "postgres";
+var dbPort = builder.Configuration["DB_PORT"] ?? "5432";
+
+var connectionString = $"Host={dbHost};Port={dbPort};Database={dbName};Username={dbUser};Password={dbPassword}";
+
 builder.Services.AddDbContext<ClinicaDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICitasService, CitasService>();
