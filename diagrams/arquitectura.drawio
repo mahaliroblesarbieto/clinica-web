@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="draw.io" version="22.1.0">
+  <diagram name="Arquitectura Sistema" id="arquitectura">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Capa de Presentación -->
+        <mxCell id="presentacion" value="CAPA DE PRESENTACIÓN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="react" value="React 18 + TypeScript&#xa;TailwindCSS&#xa;React Router" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="components" value="Componentes&#xa;- Login/Register&#xa;- Dashboard&#xa;- Agendamiento&#xa;- Layout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="140" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services" value="Servicios API&#xa;- authService&#xa;- citasService&#xa;- medicosService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="560" y="140" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Capa de Aplicación -->
+        <mxCell id="aplicacion" value="CAPA DE APLICACIÓN (.NET)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="1080" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="controllers" value="Controllers&#xa;AuthController&#xa;CitasController&#xa;MedicosController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="servicesnet" value="Services&#xa;AuthService&#xa;CitasService&#xa;MedicosService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="models" value="Models/DTOs&#xa;Usuario, Cita&#xa;Medico, Sede&#xa;Especialidad" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="560" y="380" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security" value="Seguridad&#xa;JWT Authentication&#xa;BCrypt Password&#xa;CORS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="800" y="380" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Capa de Datos -->
+        <mxCell id="datos" value="CAPA DE DATOS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1080" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="efcore" value="Entity Framework Core&#xa;DbContext&#xa;Repository Pattern" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="620" width="280" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sqlserver" value="SQL Server 2019+&#xa;10 Tablas&#xa;Procedimientos&#xa;Índices" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="600" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- Conexiones -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="react" target="controllers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="controllers" target="servicesnet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="servicesnet" target="efcore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="efcore" target="sqlserver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
