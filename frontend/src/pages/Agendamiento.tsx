@@ -261,15 +261,80 @@ export default function Agendamiento() {
                 >
                   Limpiar Filtros
                 </button>
-
-                <button
-                  onClick={() => setPaso(2)}
-                  disabled={medicos.length === 0}
-                  className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Continuar
-                </button>
               </div>
+
+              {/* Mostrar resultados de búsqueda */}
+              {loading ? (
+                <div className="text-center py-12">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+                  <p className="mt-4 text-gray-600">Buscando médicos...</p>
+                </div>
+              ) : medicos.length > 0 ? (
+                <div className="mt-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">
+                    Médicos Disponibles ({medicos.length})
+                  </h3>
+                  <div className="space-y-4">
+                    {medicos.map((medico) => (
+                      <div
+                        key={medico.medicoID}
+                        className={`bg-white rounded-xl shadow-sm p-6 border-2 transition-colors cursor-pointer ${
+                          medicoSeleccionado?.medicoID === medico.medicoID
+                            ? 'border-primary-600'
+                            : 'border-transparent hover:border-gray-300'
+                        }`}
+                        onClick={() => handleSeleccionarMedico(medico)}
+                      >
+                        <div className="flex items-start gap-6">
+                          <img
+                            src={medico.fotoURL || 'https://via.placeholder.com/96'}
+                            alt={medico.nombreCompleto}
+                            className="w-24 h-24 rounded-lg object-cover"
+                          />
+                          
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between mb-2">
+                              <div>
+                                <h3 className="text-lg font-bold text-gray-900">{medico.nombreCompleto}</h3>
+                                <p className="text-primary-600 font-medium">{medico.especialidadNombre}</p>
+                              </div>
+                              {medicoSeleccionado?.medicoID === medico.medicoID && (
+                                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
+                                  SELECCIONADO
+                                </span>
+                              )}
+                            </div>
+
+                            <div className="flex items-center gap-2 mb-3">
+                              <div className="flex items-center">
+                                <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                                <span className="ml-1 text-sm font-semibold text-gray-900">
+                                  {medico.calificacion.toFixed(1)}
+                                </span>
+                                <span className="ml-1 text-sm text-gray-500">
+                                  ({medico.numeroResenas} reseñas)
+                                </span>
+                              </div>
+                            </div>
+
+                            <p className="text-gray-600 text-sm mb-3">
+                              {medico.biografia || 'Especialista altamente calificado con amplia experiencia.'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => setPaso(2)}
+                    disabled={!medicoSeleccionado}
+                    className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+                  >
+                    Continuar con {medicoSeleccionado?.nombreCompleto || 'médico seleccionado'}
+                  </button>
+                </div>
+              ) : null}
             </div>
           )}
 
