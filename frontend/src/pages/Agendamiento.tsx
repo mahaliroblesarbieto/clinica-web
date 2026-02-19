@@ -4,8 +4,8 @@ import { useAuth } from '../context/AuthContext'
 import { medicosService } from '../services/medicosService'
 import { citasService } from '../services/citasService'
 import { Medico, Especialidad, Sede, HorarioDisponible } from '../types'
-import { Search, MapPin, Star, Calendar, Check, ArrowRight } from 'lucide-react'
-import { format, addDays, parseISO } from 'date-fns'
+import { Search, MapPin, Star, Calendar, ArrowRight, Clock } from 'lucide-react'
+import { format, addDays } from 'date-fns'
 import { es } from 'date-fns/locale'
 
 export default function Agendamiento() {
@@ -16,7 +16,7 @@ export default function Agendamiento() {
   const [especialidades, setEspecialidades] = useState<Especialidad[]>([])
   const [sedes, setSedes] = useState<Sede[]>([])
   const [medicos, setMedicos] = useState<Medico[]>([])
-  const [horarios, setHorarios] = useState<HorarioDisponible[]>([])
+  const [, setHorarios] = useState<HorarioDisponible[]>([])
   
   const [filtros, setFiltros] = useState({
     especialidadID: 0,
@@ -29,7 +29,7 @@ export default function Agendamiento() {
   const [fechaSeleccionada, setFechaSeleccionada] = useState<Date | null>(null)
   const [horaSeleccionada, setHoraSeleccionada] = useState<string>('')
   
-  const [resumen, setResumen] = useState({
+  const [resumen] = useState({
     valorConsulta: 180000,
     valorCobertura: 145000,
   })

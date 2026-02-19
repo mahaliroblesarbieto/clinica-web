@@ -32,9 +32,9 @@ export default function WatsonChat() {
     
     // Configuración de Watson Assistant
     window.watsonAssistantChatOptions = {
-      integrationID: process.env.VITE_WATSON_INTEGRATION_ID || 'YOUR_INTEGRATION_ID',
-      region: process.env.VITE_WATSON_REGION || 'us-south',
-      serviceInstanceID: process.env.VITE_WATSON_SERVICE_INSTANCE_ID || 'YOUR_SERVICE_INSTANCE_ID',
+      integrationID: import.meta.env.VITE_WATSON_INTEGRATION_ID || 'YOUR_INTEGRATION_ID',
+      region: import.meta.env.VITE_WATSON_REGION || 'us-south',
+      serviceInstanceID: import.meta.env.VITE_WATSON_SERVICE_INSTANCE_ID || 'YOUR_SERVICE_INSTANCE_ID',
       onLoad: function(instance: any) {
         instance.render();
       },
@@ -47,7 +47,7 @@ export default function WatsonChat() {
     };
 
     script.src = `https://web-chat.global.assistant.watson.appdomain.cloud/versions/${
-      process.env.VITE_WATSON_CLIENT_VERSION || 'latest'
+      import.meta.env.VITE_WATSON_CLIENT_VERSION || 'latest'
     }/WatsonAssistantChatEntry.js`;
     
     document.head.appendChild(script);
