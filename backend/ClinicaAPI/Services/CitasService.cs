@@ -112,7 +112,7 @@ public class CitasService : ICitasService
             return false;
 
         cita.Estado = nuevoEstado;
-        cita.FechaModificacion = DateTime.UtcNow;
+        cita.FechaActualizacion = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
         return true;

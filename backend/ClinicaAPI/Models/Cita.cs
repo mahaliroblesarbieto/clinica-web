@@ -20,8 +20,6 @@ public class Cita
     [Required]
     public DateTime FechaCita { get; set; }
 
-    public int Duracion { get; set; } = 30;
-
     [Required]
     [MaxLength(100)]
     public string TipoServicio { get; set; } = string.Empty;
@@ -33,11 +31,7 @@ public class Cita
     [MaxLength(500)]
     public string? MotivoConsulta { get; set; }
 
-    [MaxLength(1000)]
-    public string? NotasMedico { get; set; }
-
-    [MaxLength(1000)]
-    public string? Diagnostico { get; set; }
+    public string? Observaciones { get; set; }
 
     [Column(TypeName = "decimal(10,2)")]
     public decimal? ValorConsulta { get; set; }
@@ -50,7 +44,7 @@ public class Cita
 
     public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
 
-    public DateTime? FechaModificacion { get; set; }
+    public DateTime? FechaActualizacion { get; set; }
 
     [ForeignKey("PacienteID")]
     public virtual Usuario? Paciente { get; set; }
