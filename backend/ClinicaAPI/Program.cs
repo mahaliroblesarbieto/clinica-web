@@ -16,6 +16,9 @@ var dbPort = builder.Configuration["DB_PORT"] ?? "5432";
 
 var connectionString = $"Host={dbHost};Port={dbPort};Database={dbName};Username={dbUser};Password={dbPassword}";
 
+// Configurar Npgsql para aceptar DateTime sin timezone
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 builder.Services.AddDbContext<ClinicaDbContext>(options =>
     options.UseNpgsql(connectionString));
 
