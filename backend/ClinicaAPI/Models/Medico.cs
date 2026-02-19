@@ -29,6 +29,7 @@ public class Medico
 
     public int NumeroResenas { get; set; } = 0;
 
+    [Column("AniosExperiencia")]
     public int AnosExperiencia { get; set; } = 0;
 
     public bool Activo { get; set; } = true;
