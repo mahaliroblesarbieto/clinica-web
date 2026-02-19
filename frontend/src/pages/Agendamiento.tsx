@@ -74,6 +74,8 @@ export default function Agendamiento() {
         sedeID: filtros.sedeID || undefined,
         fecha: format(new Date(), 'yyyy-MM-dd'),
       })
+      console.log('Médicos encontrados:', resultado)
+      console.log('Cantidad de médicos:', resultado.length)
       setMedicos(resultado)
     } catch (error) {
       console.error('Error al buscar médicos:', error)
