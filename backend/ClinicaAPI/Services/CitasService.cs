@@ -89,16 +89,16 @@ public class CitasService : ICitasService
         _context.Citas.Add(cita);
         await _context.SaveChangesAsync();
 
-        var notificacion = new Notificacion
-        {
-            UsuarioID = request.PacienteID,
-            Mensaje = $"Tu cita ha sido agendada para el {request.FechaCita:dd/MM/yyyy HH:mm}",
-            Tipo = "Confirmación",
-            FechaCreacion = DateTime.UtcNow
-        };
-
-        _context.Notificaciones.Add(notificacion);
-        await _context.SaveChangesAsync();
+        // TODO: Reactivar notificaciones después de que el schema esté completamente sincronizado
+        // var notificacion = new Notificacion
+        // {
+        //     UsuarioID = request.PacienteID,
+        //     Mensaje = $"Tu cita ha sido agendada para el {request.FechaCita:dd/MM/yyyy HH:mm}",
+        //     Tipo = "Confirmación",
+        //     FechaCreacion = DateTime.UtcNow
+        // };
+        // _context.Notificaciones.Add(notificacion);
+        // await _context.SaveChangesAsync();
 
         return await GetCitaById(cita.CitaID);
     }
