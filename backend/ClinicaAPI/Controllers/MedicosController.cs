@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 using ClinicaAPI.DTOs;
 using ClinicaAPI.Services;
 
@@ -6,6 +7,7 @@ namespace ClinicaAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableCors("AllowFrontend")]
 public class MedicosController : ControllerBase
 {
     private readonly IMedicosService _medicosService;
