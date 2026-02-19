@@ -34,7 +34,7 @@ public class Usuario
     [MaxLength(20)]
     public string TipoUsuario { get; set; } = "Paciente";
 
-    public DateTime FechaRegistro { get; set; } = DateTime.Now;
+    public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
 
     public DateTime? UltimoAcceso { get; set; }
 

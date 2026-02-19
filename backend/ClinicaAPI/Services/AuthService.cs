@@ -32,7 +32,7 @@ public class AuthService : IAuthService
         if (!BCrypt.Net.BCrypt.Verify(request.Password, usuario.PasswordHash))
             return null;
 
-        usuario.UltimoAcceso = DateTime.Now;
+        usuario.UltimoAcceso = DateTime.UtcNow;
         await _context.SaveChangesAsync();
 
         var token = GenerateJwtToken(usuario);
@@ -64,7 +64,7 @@ public class AuthService : IAuthService
             Telefono = request.Telefono,
             Direccion = request.Direccion,
             TipoUsuario = "Paciente",
-            FechaRegistro = DateTime.Now,
+            FechaRegistro = DateTime.UtcNow,
             Activo = true
         };
 

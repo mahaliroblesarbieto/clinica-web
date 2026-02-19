@@ -27,7 +27,7 @@ public class Notificacion
 
     public bool Leida { get; set; } = false;
 
-    public DateTime FechaCreacion { get; set; } = DateTime.Now;
+    public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
 
     [ForeignKey("UsuarioID")]
     public virtual Usuario? Usuario { get; set; }

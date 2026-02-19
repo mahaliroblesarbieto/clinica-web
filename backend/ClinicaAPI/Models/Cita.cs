@@ -48,7 +48,7 @@ public class Cita
     [Column(TypeName = "decimal(10,2)")]
     public decimal? TotalPagar { get; set; }
 
-    public DateTime FechaCreacion { get; set; } = DateTime.Now;
+    public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
 
     public DateTime? FechaModificacion { get; set; }
 

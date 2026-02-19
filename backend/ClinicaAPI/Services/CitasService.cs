@@ -112,7 +112,7 @@ public class CitasService : ICitasService
             return false;
 
         cita.Estado = nuevoEstado;
-        cita.FechaModificacion = DateTime.Now;
+        cita.FechaModificacion = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
         return true;
@@ -125,7 +125,7 @@ public class CitasService : ICitasService
 
     public async Task<List<CitaDTO>> GetCitasProximas(int pacienteId)
     {
-        var ahora = DateTime.Now;
+        var ahora = DateTime.UtcNow;
         return await _context.Citas
             .Include(c => c.Medico)
                 .ThenInclude(m => m!.Usuario)
@@ -142,7 +142,7 @@ public class CitasService : ICitasService
 
     public async Task<List<CitaDTO>> GetHistorialCitas(int pacienteId)
     {
-        var ahora = DateTime.Now;
+        var ahora = DateTime.UtcNow;
         return await _context.Citas
             .Include(c => c.Medico)
                 .ThenInclude(m => m!.Usuario)
