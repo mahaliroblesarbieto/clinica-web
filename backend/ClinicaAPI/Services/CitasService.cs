@@ -171,7 +171,6 @@ public class CitasService : ICitasService
             SedeNombre = cita.Sede?.Nombre,
             SedeDireccion = cita.Sede?.Direccion,
             FechaCita = cita.FechaCita,
-            Duracion = cita.Duracion,
             TipoServicio = cita.TipoServicio,
             Estado = cita.Estado,
             MotivoConsulta = cita.MotivoConsulta,

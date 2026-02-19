@@ -13,7 +13,6 @@ public class CitaDTO
     public string? SedeNombre { get; set; }
     public string? SedeDireccion { get; set; }
     public DateTime FechaCita { get; set; }
-    public int Duracion { get; set; }
     public string TipoServicio { get; set; } = string.Empty;
     public string Estado { get; set; } = string.Empty;
     public string? MotivoConsulta { get; set; }
