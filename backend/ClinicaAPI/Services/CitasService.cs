@@ -83,7 +83,7 @@ public class CitasService : ICitasService
             ValorCobertura = request.ValorCobertura,
             TotalPagar = totalPagar,
             Estado = "Pendiente",
-            FechaCreacion = DateTime.Now
+            FechaCreacion = DateTime.UtcNow
         };
 
         _context.Citas.Add(cita);
@@ -96,7 +96,7 @@ public class CitasService : ICitasService
             Titulo = "Cita Creada",
             Mensaje = $"Tu cita ha sido agendada para el {request.FechaCita:dd/MM/yyyy HH:mm}",
             Tipo = "Confirmación",
-            FechaCreacion = DateTime.Now
+            FechaCreacion = DateTime.UtcNow
         };
 
         _context.Notificaciones.Add(notificacion);
