@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copiar csproj y restaurar dependencias
-COPY ClinicaAPI.csproj ./
+COPY backend/ClinicaAPI/ClinicaAPI.csproj ./
 RUN dotnet restore
 
 # Copiar todo el código y compilar
-COPY . .
+COPY backend/ClinicaAPI/ ./
 RUN dotnet build -c Release -o /app/build
 RUN dotnet publish -c Release -o /app/publish
 
