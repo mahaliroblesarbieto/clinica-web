@@ -92,8 +92,6 @@ public class CitasService : ICitasService
         var notificacion = new Notificacion
         {
             UsuarioID = request.PacienteID,
-            CitaID = cita.CitaID,
-            Titulo = "Cita Creada",
             Mensaje = $"Tu cita ha sido agendada para el {request.FechaCita:dd/MM/yyyy HH:mm}",
             Tipo = "Confirmación",
             FechaCreacion = DateTime.UtcNow

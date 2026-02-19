@@ -11,19 +11,12 @@ public class Notificacion
     [Required]
     public int UsuarioID { get; set; }
 
-    public int? CitaID { get; set; }
-
-    [Required]
-    [MaxLength(200)]
-    public string Titulo { get; set; } = string.Empty;
-
-    [Required]
-    [MaxLength(1000)]
-    public string Mensaje { get; set; } = string.Empty;
-
     [Required]
     [MaxLength(50)]
     public string Tipo { get; set; } = "Información";
+
+    [Required]
+    public string Mensaje { get; set; } = string.Empty;
 
     public bool Leida { get; set; } = false;
 
@@ -31,7 +24,4 @@ public class Notificacion
 
     [ForeignKey("UsuarioID")]
     public virtual Usuario? Usuario { get; set; }
-
-    [ForeignKey("CitaID")]
-    public virtual Cita? Cita { get; set; }
 }
