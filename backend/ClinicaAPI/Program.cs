@@ -29,7 +29,7 @@ builder.Services.AddScoped<IMedicosService, MedicosService>();
 // Agregar HttpClient para Watson Assistant
 builder.Services.AddHttpClient();
 
-var jwtSettings = builder.Configuration.GetSection("Jwt");
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var secretKey = Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]!);
 
 builder.Services.AddAuthentication(options =>
